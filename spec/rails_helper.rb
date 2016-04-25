@@ -13,15 +13,9 @@ RSpec.configure do |config|
     config.include FactoryGirl::Syntax::Methods
     config.include Capybara::DSL
 
-    include Warden::Test::Helpers
-    Warden.test_mode!
-
     config.use_transactional_fixtures = true
     config.infer_spec_type_from_file_location!
     config.filter_rails_from_backtrace!
-    config.after :each do
-        Warden.test_reset!
-    end
 end
 
 Shoulda::Matchers.configure do |config|
