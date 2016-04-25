@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500&subset=latin,cyrillic');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+}
+
+html {
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        background: rgba(217,217,217,0.8);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    color: #000;
+    .container {
+        margin-top: 50px;
+        padding-top: 30px;
+    }
+    .navbar {
+        padding: 10px 0 10px 10px;
+        .navbar-nav li {
+            text-align: left;
+            margin: 0 10px;
+            a {
+                padding: 6px 15px;
+            }
+        }
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        color: #AAA;
+    }
+    .navbar-inverse .navbar-nav > li:hover a {
+        color: #FFF;
+    }
+    .inside {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -2;
+        //background-image: image-url('background.jpg');
+        background-size: cover;
+        background-position: center;
+        .shadow {
+            position: fixed;
+            background: rgba(0,0,0,0.3);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+#game_creation {
+    background: #FFF;
+    padding: 0 15px 15px;
+}

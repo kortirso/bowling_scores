@@ -1,0 +1,21 @@
+#game_creation
+    .row
+        .col-xs-12
+            h1 Game creation
+            = simple_form_for @game do |f|
+                .col-xs-12#new_game_alleys
+                    h4 Players
+                    - index = 0
+                    = f.simple_fields_for :alleys, @game.alleys.build do |x|
+                        .alleys data={alleys: "#{index}"}
+                            .col-xs-6
+                                = x.input :player, label: false, placeholder: 'Player name'
+                            .col-xs-1
+                                p= link_to 'x', '#', class: 'remove_player btn btn-sm btn-warning'
+                            .clearfix
+                            - index += 1
+                .col-xs-12
+                    p= link_to 'Add Player', '', class: 'duplicate_player btn btn-success'
+                .col-xs-12
+                    .actions
+                        = f.button :submit, class: "btn btn-success", value: 'Create Game'
