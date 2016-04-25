@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  pool: 20
+  port: 5432
+  username: <%= ENV['BOWLING_DATABASE_USERNAME'] %>
+  password: <%= ENV['BOWLING_DATABASE_PASSWORD'] %>
+  encoding: utf8
+
+development:
+  <<: *default
+  database: bowling_development
+
+test:
+  <<: *default
+  database: bowling_test
+
+production:
+  <<: *default
+  database: bowling_production
