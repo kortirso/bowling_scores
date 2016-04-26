@@ -7,7 +7,7 @@ class Throw < ActiveRecord::Base
 
     def self.build(game_id, pins)
         if pins >= 0 && pins <= 10
-            current_alley = Game.find(game_id).alleys.order(id: :asc).find_by(current_throw: true)
+            current_alley = Game.find(game_id).alleys.find_by(current_throw: true)
             current_frame = current_alley.frames.find_by(current: true)
 
             if current_frame.can_hit?(pins)

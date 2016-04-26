@@ -11,4 +11,8 @@ RSpec.describe Throw, type: :model do
 
         expect(_throw).to be_valid
     end
+
+    context 'self.build(game_id, pins)' do
+
+    end
 end

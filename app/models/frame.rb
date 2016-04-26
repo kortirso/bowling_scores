@@ -11,7 +11,7 @@ class Frame < ActiveRecord::Base
         if self.number != 10
             result = self.throws.count == 0 || 10 - self.pins >= pins ? true : false
         else
-            result = self.throws.count == 0 || self.throws.count == 1 && self.throws.first.pins == 10 || self.throws.count == 1 && 10 - self.pins >= pins || self.throws.count == 2 && self.result == 'X X' || self.throws.count == 2 && self.throws.first.pins != 10 || self.throws.count == 2 && self.throws.last.pins != 10 && 10 - self.throws.last.pins >= pins ? true : false
+            result = self.throws.count == 0 || (self.throws.count == 1 && self.throws.first.pins == 10) || (self.throws.count == 1 && 10 - self.pins >= pins) || (self.throws.count == 2 && self.result == 'X X') || (self.throws.count == 2 && self.throws.first.pins != 10) || (self.throws.count == 2 && self.throws.last.pins != 10 && 10 - self.throws.last.pins >= pins) ? true : false
         end
         result
     end
