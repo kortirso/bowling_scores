@@ -1,0 +1,35 @@
+.row
+    .panel.panel-default
+        .panel-heading Game scores
+        .panel-body
+            .col-xs-12.col-sm-2
+                - unless @game.completed
+                    #throw_block
+                        = simple_form_for Throw.new, as: :throw, remote: true, url: throw_index_path do |f|
+                            .row
+                                = f.input :game, as: :hidden, input_html: {value: "#{@game.id}"}
+                                - if @game.alleys.find_by(current_throw: true)
+                                    .col-xs-12.col-lg-6#username= @game.alleys.find_by(current_throw: true).player
+                                    .clearfix
+                                br
+                                .col-xs-6= f.input :pins, label: false, include_blank: false
+                                .clearfix
+                                .col-xs-12
+                                    .actions
+                                        = f.button :submit, class: 'btn btn-sm btn-primary', value: 'Throw'
+                        br
+            .col-xs-12.col-sm-10
+                table.table.table-striped
+                    thead
+                        tr
+                            th Player name
+                            - (1..10).each do |i|
+                                th= i
+                            th Points
+                    tbody
+                        - @alleys.each do |alley|
+                            tr
+                                td= alley.player
+                                - (1..10).each do |i|
+                                    td class="#{alley.player}-#{i}"= alley.frames.with_number(i).result
+                                td class="#{alley.player}-points"= alley.points

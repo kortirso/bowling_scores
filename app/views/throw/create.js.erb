@@ -1,0 +1,11 @@
+<% @current_alley.reload %>
+<% @current_frame.reload %>
+<% @game.reload %>
+$('.<%= "#{@current_alley.player}-#{@current_frame.number}" %>').html('<%= @current_frame.result %>');
+$('.<%= "#{@current_alley.player}-points" %>').html('<%= @current_alley.points %>');
+$('#throw_pins').val('0');
+<% if @game.completed %>
+    $('#throw_block').hide();
+<% else %>
+    $('#username').html('<%= @game.alleys.find_by(current_throw: true).player %>');
+<% end %>

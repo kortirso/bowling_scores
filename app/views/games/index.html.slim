@@ -1,0 +1,6 @@
+#game_list
+    .row
+        .col-xs-12
+            h1 Game's list
+            - @games.each do |game|
+                = link_to "Game ##{game.id}", game, class: 'btn btn-sm btn-primary'

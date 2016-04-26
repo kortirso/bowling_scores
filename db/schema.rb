@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425161635) do
+ActiveRecord::Schema.define(version: 20160426120106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,18 +30,21 @@ ActiveRecord::Schema.define(version: 20160425161635) do
   create_table "frames", force: :cascade do |t|
     t.integer  "alley_id"
     t.integer  "number"
-    t.integer  "pins",       default: 10
+    t.integer  "pins",       default: 0
     t.string   "result"
     t.integer  "points",     default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "current",    default: false
+    t.boolean  "completed",  default: false
   end
 
   add_index "frames", ["alley_id"], name: "index_frames_on_alley_id", using: :btree
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "completed",  default: false
   end
 
   create_table "throws", force: :cascade do |t|
@@ -49,8 +52,10 @@ ActiveRecord::Schema.define(version: 20160425161635) do
     t.integer  "pins",       default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "alley_id"
   end
 
+  add_index "throws", ["alley_id"], name: "index_throws_on_alley_id", using: :btree
   add_index "throws", ["frame_id"], name: "index_throws_on_frame_id", using: :btree
 
 end

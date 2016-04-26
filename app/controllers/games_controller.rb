@@ -6,7 +6,7 @@ class GamesController < ApplicationController
     end
 
     def show
-        
+        @alleys = @game.alleys.order(id: :asc).includes(:frames)
     end
 
     def new

@@ -71,7 +71,19 @@ body {
     }
 }
 
-#game_creation {
+#game_creation, #game_list {
     background: #FFF;
     padding: 0 15px 15px;
+}
+
+table {
+    th {
+        min-width: 65px;
+    }
+    th, tr {
+        text-align: center;
+        td:nth-of-type(1) {
+            text-align: left;
+        }
+    }
 }
