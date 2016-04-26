@@ -5,5 +5,10 @@ RSpec.describe Frame, type: :model do
     it { should validate_presence_of :number }
     it { should validate_presence_of :pins }
     it { should validate_inclusion_of(:number).in_range(1..10) }
-    it { should validate_inclusion_of(:pins).in_range(0..10) }
+
+    it 'should be valid' do
+        frame = create :frame
+
+        expect(frame).to be_valid
+    end
 end
