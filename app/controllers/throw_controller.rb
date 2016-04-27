@@ -8,7 +8,7 @@ class ThrowController < ApplicationController
     private
     def set_variables
         @game = Game.find(params[:throw][:game])
-        @current_alley = @game.alleys.find_by(current_throw: true)
-        @current_frame = @current_alley.frames.find_by(current: true)
+        @current_alley = @game.alleys.current
+        @current_frame = @current_alley.frames.current
     end
 end

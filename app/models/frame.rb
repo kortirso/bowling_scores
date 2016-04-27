@@ -1,11 +1,13 @@
 class Frame < ActiveRecord::Base
     belongs_to :alley
-    has_many :throws
+    has_many :throws, dependent: :destroy
 
     validates :alley_id, :number, :pins, presence: true
     validates :number, inclusion: { in: (1..10) }
 
     scope :with_number, -> (number) { find_by(number: number) }
+    scope :finished, -> { where(completed: true) }
+    scope :current, -> { find_by(current: true) }
 
     def can_hit?(pins)
         if self.number != 10

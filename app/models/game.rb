@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-    has_many :alleys
+    has_many :alleys, dependent: :destroy
     accepts_nested_attributes_for :alleys, allow_destroy: true
 
     after_create :set_throw
