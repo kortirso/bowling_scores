@@ -38,7 +38,7 @@ class Alley < ActiveRecord::Base
         if self.frames.where(completed: true).count == 10 && self == alleys.last
             self.game.update(completed: true)
         else
-            self == alleys.last ? alleys.first.update(current_throw: true) : alleys.find(self.id + 1).update(current_throw: true)
+            self == alleys.last ? alleys.first.update(current_throw: true) : alleys.where('id > ?', self.id).order(id: :asc).first.update(current_throw: true)
         end
     end
 

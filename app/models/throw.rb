@@ -27,9 +27,9 @@ class Throw < ActiveRecord::Base
                         current_frame.update(pins: pins, result: res)
                     elsif current_frame.throws.count == 2
                         if current_frame.throws.first.pins != 10
-                            current_frame.pins + pins != 10 ? current_alley.complete(current_frame.number, "S#{current_frame.pins + pins}", current_frame.pins + pins) : current_frame.update(pins: current_frame.pins + pins, result: "S#{current_frame.pins + pins}")
+                            current_frame.pins + pins != 10 ? current_alley.complete(current_frame.number, "S#{current_frame.pins + pins}", current_frame.pins + pins) : current_frame.update(pins: current_frame.pins + pins, result: "#{current_frame.result}/#{res}")
                         else
-                            current_frame.update!(pins: current_frame.pins + pins, result: "#{current_frame.result} #{res}")
+                            current_frame.update(pins: current_frame.pins + pins, result: "X #{res}")
                         end
                     else
                         current_frame.result == 'X X' || current_frame.throws.first.pins != 10 ? current_alley.complete(current_frame.number, "#{current_frame.result} #{res}", current_frame.pins + pins) : current_alley.complete(current_frame.number, "#{current_frame.result}/#{pins}", current_frame.pins + pins)

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
     resources :games, only: [:index, :show, :new, :create]
     resources :throw, only: :create
     root to: 'games#index'
+    match "*path", to: "application#catch_404", via: :all
 end
