@@ -19,17 +19,18 @@
                                         = f.button :submit, class: 'btn btn-sm btn-primary', value: 'Throw'
                         br
             .col-xs-12.col-sm-10
-                table.table.table-striped
-                    thead
-                        tr
-                            th Player name
-                            - (1..10).each do |i|
-                                th= i
-                            th Points
-                    tbody
-                        - @alleys.each do |alley|
+                .table-responsive
+                    table.table.table-striped
+                        thead
                             tr
-                                td= alley.player
+                                th Player name
                                 - (1..10).each do |i|
-                                    td class="#{alley.player}-#{i}"= alley.frames.with_number(i).result
-                                td class="#{alley.player}-points"= alley.points
+                                    th= i
+                                th Points
+                        tbody
+                            - @alleys.each do |alley|
+                                tr
+                                    td= alley.player
+                                    - (1..10).each do |i|
+                                        td class="#{alley.player}-#{i}"= alley.frames.with_number(i).result
+                                    td class="#{alley.player}-points"= alley.points
